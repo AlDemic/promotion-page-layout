@@ -16,4 +16,19 @@ gridButton.addEventListener("click", () => {
         if (slideMainText) slideMainText.classList.toggle("grid-mode");
         if (slideTitleText) slideTitleText.classList.toggle("grid-mode");
     });
+
+    //change aria-label "Grid view off" -> "Grid view on"
+    const gridAria = gridButton.getAttribute("aria-label") === "Grid view on";
+    if(gridAria) {
+        gridButton.setAttribute("aria-label", "Grid view off");
+    } else {
+        gridButton.setAttribute("aria-label", "Grid view on");
+    }
+    //change text "Show in grid" -> "Show normal"
+    const gridText = document.querySelector(".footer__gridButton-text");
+    if(gridText.textContent === "Show in grid") {
+        gridText.textContent = "Show normal";
+    } else {
+        gridText.textContent = "Show in grid";
+    }
 });

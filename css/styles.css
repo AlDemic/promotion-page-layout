@@ -81,7 +81,6 @@ Main structure by flex(column):
     display: block;
 }
 
-
 /*Menu button*/
 .header__menu-button {
   display: flex;
@@ -348,5 +347,51 @@ Sliders block
     border: none;
     background: none;
     cursor: pointer;
+}
+
+/*============
+Adaptive part for mobile
+==============*/
+@media (max-width: 768px) {
+  .layout {
+    max-width: 768px;
+    height: auto;
+  }
+  
+  /*add overflow-y to fix height of flex-container by scroll. Otherwise - overflow*/
+  .main {
+    overflow-y: auto; 
+  }
+
+  /*dropdown menu block*/
+  .header__menu-options {
+    min-width: 150px;
+    right: -5%; /*to not overflow layout*/
+  }
+
+  /*grid view block*/
+  .swiper.sliders.grid-mode .swiper-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+    height: auto;
+    position: static;
+  }
+
+  .sliders__slider-pic {
+    max-width: 330px;
+    width: 100%;
+    height: auto;
+  }
+
+  /*Text-picture block*/
+  .sliders__slider-textMain {
+    max-width: 604px;
+    width: 100%;
+    height: auto;
+  }
+
+  .sliders__slider-textTitle {
+    width: 139px;
+    height: auto;
+  }
 }
 
