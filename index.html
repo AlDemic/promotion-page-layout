@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Promotion Page</title>
+  <link href="css/styles.css" rel="stylesheet">
+  <!--Swiper init-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+    <div class="layout">
+        <header class="header">
+            <!--Site logo by text-->
+            <div class="header__logo">
+                <a href="#"><img src="img/MariaR..png" alt="Mariar site logo" /></a>
+            </div>
+            <!--Site main menu-->
+            <div class="header__menu" role="navigation">
+                <div class="header__menu-pic">
+                    <img src="img/header-menu.png" alt="" aria-hidden="true" />
+                </div>
+                <button id="header__menu-button" class="header__menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+                    <span class="line-up"></span>
+                    <span class="line-down"></span>
+                </button>
+                <ul class="header__menu-options">
+                    <li class="header__menu-option">
+                    <a href="#" class="header__menu-link">VK</a>
+                    </li>
+                    <li class="header__menu-option">
+                    <a href="#" class="header__menu-link">X</a>
+                    </li>
+                    <li class="header__menu-option">
+                    <a href="#" class="header__menu-link">LinkedIn</a>
+                    </li>
+                    <li class="header__menu-option">
+                    <a href="#" class="header__menu-link">Telegram</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!--Main(sliders) block-->
+        <main class="main">
+            <section class="swiper sliders">
+                <div class="swiper-wrapper sliders__wrapper">
+                    <!--Slider block-->
+                    <div class="swiper-slide sliders__slide" aria-label="Slider block">
+                        <div class="sliders__slider-pic">
+                            <img src="img/main-1.png" alt="Slider main picture" />
+                        </div>
+                        <div class="sliders__slider-textMain">
+                            <div class="sliders__slider-textTitle">
+                                <img src="img/slider-titleText-pic.png" alt="Étoile • Excellence" />
+                            </div>
+                            <img src="img/slider-mainText-pic.png" alt="Créneau" />
+                        </div>
+                    </div>
+                    <!--Slider block-->
+                    <div class="swiper-slide sliders__slide" aria-label="Slider block">
+                        <div class="sliders__slider-pic">
+                            <img src="img/main-2.png" alt="Slider main picture" />
+                        </div>
+                        <div class="sliders__slider-textMain">
+                            <div class="sliders__slider-textTitle">
+                                <img src="img/slider-titleText-pic.png" alt="Étoile • Excellence" />
+                            </div>
+                            <img src="img/slider-mainText-pic.png" alt="Créneau" />
+                        </div>
+                    </div>
+                    <!--Slider block-->
+                    <div class="swiper-slide sliders__slide" aria-label="Slider block">
+                        <div class="sliders__slider-pic">
+                            <img src="img/main-3.png" alt="Slider main picture" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <button id="footer__gridButton" aria-label="Grid view">
+                <img src="img/footer-grid-button.png" src="" aria-hidden="true" />
+                <span class="footer__gridButton-text">Show in grid</span>
+            </button>
+            <section class="footer__pagination" aria-label="Pagination block">
+                <button id="footer__left-arrow" class="prev-slide" aria-label="Previous slide"><img src="img/arrow-left.png" src="" aria-hidden="true" /></button>
+                <button id="footer__right-arrow" class="next-slide" aria-label="Next slide"><img src="img/arrow-right.png" src="" aria-hidden="true" /></button>
+            </section>
+        </footer>
+    </div>
+
+    <!--Main menu-->
+    <script src="js/main-menu.js" defer></script>
+    <!--Grid view switcher-->
+    <script src="js/grid-mode-btn.js" defer></script>
+    <!--Swiper js init-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="js/swiper-init.js" defer></script>
+</body>
+</html>
+

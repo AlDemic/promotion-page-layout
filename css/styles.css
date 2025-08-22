@@ -1,0 +1,352 @@
+:root {
+  /*main root styles*/
+  --main-font: 'Anticva', sans-serif;
+  --main-font-style: normal;
+  --main-font-size: 16px;
+  --main-font-weight: 400;
+  --main-color: #FFFFFF;
+  --main-bg-color: #1E2321;
+  --nav-dropdown-bg: #2a312e; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--main-font);
+  color: var(--main-color); 
+  font-style: var(--main-font-style);
+  font-size: var(--main-font-size);
+  font-weight: var(--main-font-weight);
+}
+
+/*============
+Main structure by flex(column):
+ - header(10% of all height): site logo | menu button(dropdown) -> by flexbox(space-between);
+ - main(flex: 1): sliders block;
+ - footer(10% of all height): Grid view of sliders(btn) | Sliders pagination arrows -> by flexbox(space-between).
+ =============*/
+.layout {
+    max-width: 1440px;
+    max-height: 900px;
+    height: 100vh;
+    background: var(--main-bg-color);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: space-between;
+    padding: 3%;
+    align-items: center;
+}
+
+.header__logo-title {
+    width: 120px;
+    height: 35px;
+    display: block;
+}
+
+.header__logo-title img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* - relative pos -> bcs dropdown block has absolute pos
+   - gap between menu pic and btn*/
+.header__menu {
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+.header__menu-pic {
+    margin-top: 5px;
+    width: 39px;
+    height: 16px;
+    display: block;
+}
+
+.header__menu-pic img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/*Menu button*/
+.header__menu-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 32px;
+  height: 16px;
+  cursor: pointer;
+  position: static;
+  align-self: center;
+  border: none;
+  background: none;
+}
+
+.header__menu-button .line-up {
+    align-self: self-end;
+    width: 50%;
+    height: 2px;
+    background-color: var(--main-color);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.header__menu-button .line-down {
+    align-self: self-end;
+    width: 90%;
+    height: 2px;
+    background-color: var(--main-color);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/*animation of menu btn*/
+.header__menu-button.active .line-up:nth-child(1) {
+  transform: rotate(-60deg) translateY(1px);
+}
+
+.header__menu-button.active .line-down:nth-child(2) {
+  transform: rotate(60deg) translateY(10px);
+}
+
+/*dropdown menu block*/
+.header__menu-options {
+  position: absolute;
+  width: 100%;
+  min-width: 200px;
+  right: -30%; /*to not overflow layout*/
+  overflow-y: auto;
+  max-height: 295px;
+  padding: 10px;
+  margin-top: 40px;
+  border-radius: 8px;
+  background: var(--nav-dropdown-bg);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation-name: fadeInDown;
+  -webkit-animation-name: fadeInDown;
+  animation-duration: 0.35s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.35s;
+  -webkit-animation-fill-mode: both;
+}
+
+/*dropdown submenu block*/
+.header__menu-option {
+  display: flex;
+  height: 40px;
+  cursor: pointer;
+  padding: 0 10px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  background: var(--nav-dropdown-bg);
+}
+
+.header__menu-option:hover {
+  background: var(--main-color);
+}
+
+/*dropdown submenu link(text)*/
+.header__menu-link {
+  font-size: 18px;
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+/*change text color with submenu block hover*/
+.header__menu-option:hover .header__menu-link {
+  color: var(--main-bg-color);
+}
+
+/*dropdown block animations*/
+.header__menu.active .header__menu-options {
+  display: block;
+  opacity: 0;
+  z-index: 10;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes fadeInDown {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(0, 20px, 0);
+    opacity: 0;
+  }
+}
+
+/*============
+Main block(sliders part)
+ - give all free space(flex: 1).
+ =============*/
+.main {
+    flex: 1;
+}
+
+/*============
+Grid view block
+  - overwrite swiper default parameters;
+  - max 3 columns;
+  - switch off pagination arrows in grid mode.
+ =============*/
+.swiper.sliders.grid-mode .swiper-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; 
+    transform: none !important; 
+}
+
+.swiper.sliders.grid-mode .swiper-slide {
+    width: auto !important; 
+}
+
+.sliders__slider-textMain.grid-mode {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    width: 50%;
+    height: 150px;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.sliders__slider-textTitle.grid-mode {
+    width: 50%;
+    height: 23px;
+    margin-left: auto;
+    top: -30px; /*up pos relative to main text-pic*/
+    flex-shrink: 0; /*remove shrink ability*/
+}
+
+.footer__pagination.grid-mode {
+    display: none;
+}
+
+/*============
+Sliders block
+  - consist: main pic and text pictures;
+  - slide -> relative position for text-pic adjustment.
+ =============*/
+.swiper-slide.sliders__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+/*main slider pic*/
+.sliders__slider-pic {
+    justify-content: center;
+    align-items: center;
+    width: 472px;
+    height: 708px;
+}
+
+.sliders__slider-pic img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 256px 0px 0px 0px;
+}
+
+/*Text-picture block*/
+.sliders__slider-textMain {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    width: 1207px;
+    height: 247px;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.sliders__slider-textTitle {
+    width: 278px;
+    height: 23px;
+    margin-left: auto;
+    top: -30px; /*up pos relative to main text-pic*/
+    flex-shrink: 0; /*remove shrink ability*/
+}
+
+.sliders__slider-textMain img, 
+.sliders__slider-textTitle img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.footer {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: space-between;
+    padding: 3%;
+    align-items: center;
+}
+
+/*Grid mode btn. Consist from dec pic and text*/
+#footer__gridButton {
+    border: none;
+    background: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.footer__gridButton-text {
+    font-size: 12px;
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+
+/*sliders pagination block*/
+.footer__pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/*sliders pagination arrows*/
+#footer__left-arrow,
+#footer__right-arrow {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
