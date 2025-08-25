@@ -1,3 +1,4 @@
+//init swiper
 const swiper = new Swiper('.swiper', {
     loop: true,
     navigation: {
